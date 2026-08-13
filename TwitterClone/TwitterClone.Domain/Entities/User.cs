@@ -6,10 +6,15 @@
         private string _firstName;
         private string _lastName;
         private string _email;
+        private DateTime _createdAt;
+        private DateTime _modifiedAt;
+        private Guid _modifiedBy;
+        private Guid _createdBy;
 
         public User()
         {
             _id = Guid.NewGuid();
+            _createdAt = DateTime.UtcNow;
         }
 
         public Guid Id {
@@ -22,13 +27,38 @@
             set { _firstName = value; }
         }
 
-        public String LastName
+        public string LastName
         {
             get { return _lastName; }
             set { _lastName = value; }
         }
 
         public string Email
-        { get; set;  }
+        { get { return _email; }
+            set { _email = value; } }
+
+        public DateTime CreatedAt
+        {
+            get { return _createdAt;}
+        }
+
+        public DateTime ModifiedAt
+        {
+            get { return _modifiedAt; }
+            set { _modifiedAt = value; }
+        }
+
+        public Guid ModifiedBy
+        {
+            get { return _modifiedBy; }
+            set { _modifiedBy = value; }
+        }
+
+        public Guid CreatedBy
+        {
+            get { return _createdBy; }
+            set { _createdBy = value; }
+        }
+
     }
 }

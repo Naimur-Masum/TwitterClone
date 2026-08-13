@@ -3,32 +3,58 @@
     public class Tweet
     {
         private Guid _id;
+        private Guid _userId;
         private string _content;
-        private string _author;
+        private DateTime _createdAt;
+        private DateTime _modifiedAt;
+        private Guid _modifiedBy;
+        private Guid _createdBy;
 
-        public string Author { get; }
-        public string Content { get; private set; }
-
-
-        public Tweet(string author,string content) { 
-                
-            Author= author;
-            SetContent(content);
+        public Tweet()
+        {
+            _id = Guid.NewGuid();
+            _createdAt=DateTime.UtcNow;
+        }
+        
+        public Guid Id
+        {
+            get { return _id; } 
         }
 
-        void SetContent(string content)
+        public Guid UserId
         {
-            if (String.IsNullOrWhiteSpace(content))
-            {
-                throw new ArgumentNullException("Tweet cannot be empty.");
-            }
+            get { return _userId;}
+            set { _userId = value; }
 
-            if (content.Length > 280)
-            {
-                throw new ArgumentException("Tweet cannot exceed 280 characters.");
-            }
-            _id = Guid.NewGuid();
-            Content= content;
+        }
+
+        public string Content
+        {
+            get { return _content; }
+            set { _content = value; }
+        }
+
+        public DateTime CreatedAt
+        {
+            get { return _createdAt; }
+        }
+
+        public DateTime ModifiedAt
+        {
+            get { return _modifiedAt; }
+            set { _modifiedAt = value; }
+        }
+
+        public Guid CreatedBy
+        {
+            get { return _createdBy; }
+            set { _createdBy = value; }
+        }
+
+        public Guid ModifiedBy
+        {
+            get { return _modifiedBy; }
+            set { _modifiedBy = value;  }
         }
     }
 }
