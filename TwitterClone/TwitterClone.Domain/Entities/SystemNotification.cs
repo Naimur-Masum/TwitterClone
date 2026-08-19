@@ -20,5 +20,10 @@ namespace TwitterClone.Domain.Entities
         {
             return base.DescribeRecord();
         }
+
+        public override string GetMessage()
+        {
+            return $"System give you a message.";
+        }
     }
 }

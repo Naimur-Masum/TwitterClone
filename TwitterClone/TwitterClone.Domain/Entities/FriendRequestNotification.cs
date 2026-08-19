@@ -23,5 +23,10 @@ namespace TwitterClone.Domain.Entities
             var BaseRecord=base.DescribeRecord();
             return $"{BaseRecord}, RequestedByUserId: {RequestedByUserId}";
         }
+
+        public override string GetMessage()
+        {
+            return $"User with id {UserId} give you friend request.";
+        }
     }
 }
