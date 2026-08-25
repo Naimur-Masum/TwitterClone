@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TwitterClone.Domain.Entities
 {
-    public class Notification:BaseEntity
+    public abstract class Notification:BaseEntity
     {
         //private Guid _id;
         private string _type;
@@ -35,7 +35,7 @@ namespace TwitterClone.Domain.Entities
             set { _userId = value; }
         }
         
-        public string Message
+        protected string Message
         {
             get { return _message; }
             set { _message = value; }
@@ -52,5 +52,12 @@ namespace TwitterClone.Domain.Entities
             var baseRecord=base.DescribeRecord();
             return $"{baseRecord}, Type: {Type}, UserId: {Message}, IsRead: {IsRead}";
         }
+
+        public string GetNotificationInfo()
+        {
+            return $"UserId: {UserId}, Type:{Type}";
+        }
+
+        public abstract string GetMessage();
     }
 }
