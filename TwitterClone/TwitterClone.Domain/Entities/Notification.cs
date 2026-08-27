@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TwitterClone.Domain.Entities
 {
-    public abstract class Notification:BaseEntity
+    public abstract class Notification:BaseEntity,INotifiable
     {
         //private Guid _id;
         private string _type;
@@ -21,7 +21,10 @@ namespace TwitterClone.Domain.Entities
                 _type= notificationType;
         }
 
-        
+        public void AddNotification(Guid notificationId)
+        {
+            Console.WriteLine("Inotifiable.");
+        }
 
         public string Type
         {
@@ -59,5 +62,7 @@ namespace TwitterClone.Domain.Entities
         }
 
         public abstract string GetMessage();
+
+       
     }
 }

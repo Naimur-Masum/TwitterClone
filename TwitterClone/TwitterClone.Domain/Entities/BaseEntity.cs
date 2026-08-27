@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TwitterClone.Domain.Entities
 {
-    public class BaseEntity
+    public class BaseEntity:IFollowable
     {
         public Guid Id { get; private set; }
         public DateTime CreatedAt { get; private set; }
@@ -18,6 +18,17 @@ namespace TwitterClone.Domain.Entities
         {
             Id=Id;
             CreatedAt = DateTime.UtcNow;
+        }
+
+        
+
+        public void Follow(Guid userId)
+        {
+            Console.WriteLine(userId);
+        }
+        public void Unfollow(Guid userId)
+        {
+            Console.WriteLine(userId);
         }
 
         public virtual string DescribeRecord()
